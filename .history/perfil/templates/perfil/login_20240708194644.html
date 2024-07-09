@@ -1,0 +1,29 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block conteudo %}
+    <h1>Login</h1>
+    <div class="row">
+        <div class="col-lg-6 mt-3">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+    <h1>Atualizar Cadastro</h1>
+    <div class="row">
+        <div class="col-lg-6 mt-3">
+            <form method="post">
+                {% csrf_token %}
+                {{ user_form|crispy }}
+                {{ perfil_form|crispy }}
+                <input type="hidden" name="next" value="{{ request.GET.next }}">
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block conteudo %}
+<div class="row">
+    <div class="col-lg mt-3">
+        <h4>Login</h4>
+        <p>Se você já é cadastrado, entre com seus dados:</p>
+        <form method="POST" action="">
+            {% csrf_token %}
+            <!-- Renderização do formulário usando Crispy Forms parte do Login-->
+            <div class="row">
+                <div class="col-md-6">
+                    {{ user_form.username|as_crispy_field }}
+                </div>
+                
+            </div>
+            <div class="row">
+                
+                <div class="col-md-6">
+                    {{ user_form.password|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Enviar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg mt-3">
+        <h4>Cadastro</h4>
+           
+        <form method="POST" action="">
+            <!-- Renderização do formulário usando Crispy Forms  parte do cadastro-->
+            <div class="row">
+                    <div class="col-md-6">
+                        {{ user_form.first_name|as_crispy_field }}
+                    </div>
+                </div>  
+                    <div class="row">  
+                    <div class="col-md-6">
+                        {{ user_form.last_name|as_crispy_field }}
+                    </div>
+                </div>
+        <div class="row">
+                <div class="col-md-6">
+                {{ perfil_form.data_nascimento|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ perfil_form.endereco|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ perfil_form.numero|as_crispy_field }}
+            </div>
+        <div class="col-md-6">
+                {{ perfil_form.complemento|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ perfil_form.bairro|as_crispy_field }}
+            </div>
+        <div class="col-md-6">
+                {{ perfil_form.cep|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ perfil_form.bairro|as_crispy_field }}
+            </div>
+        </div>
+        <div class="col-md-6">
+                {{ perfil_form.cep|as_crispy_field }}
+            </div>
+        </div>
+
+
+
+
+
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">
+                        Salvar
+                    </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

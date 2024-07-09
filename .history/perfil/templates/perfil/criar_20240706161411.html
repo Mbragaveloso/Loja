@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block conteudo %}
+    <h1>Cadastro</h1>
+    <p>Se você não tem cadastro, favor efetuar o cadastro para continuar sua compra:</p>
+
+    <form method="post" action="{% url 'perfil:perfil' %}" style="margin-top: 20px;">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ perfilform|crispy }}
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+            Enviar
+        </button>
+    </form>
+{% endblock %}

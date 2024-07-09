@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'custom/css/style.css' %}">
+
+{% block conteudo %}
+
+<div class="container">
+    <div class="row">
+
+        {% if not request.user.is_authenticated %}
+        <div class="col-lg mt-3">
+            <h4>Login</h4>
+            <p>Se você já tem cadastro, basta entrar com seu usuário e senha abaixo:</p>
+        </div>
+        {% endif %}
+
+        <div class="col-lg mt-3">
+            {% block titulo_cadastro %}
+            <h4>Cadastro</h4>
+            <p>Se você não tem cadastro, faça seu cadastro:</p>
+            {% endblock %}
+
+            <form method="post" action="" style="margin-top: 20px;">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ user_form.first_name.label_tag }}
+                    {{ user_form.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.last_name.label_tag }}
+                    {{ user_form.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.username.label_tag }}
+                    {{ user_form.username }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.password.label_tag }}
+                    {{ user_form.password }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.email.label_tag }}
+                    {{ user_form.email }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

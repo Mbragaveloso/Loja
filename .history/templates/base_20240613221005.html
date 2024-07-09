@@ -1,0 +1,26 @@
+{% load static %}
+<!doctype html>
+
+<html lang="en">
+
+<head> 
+    {% include 'parciais/_head.html' %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'custom/css/style.css' %}">
+    <title>Lojas Braga</title>
+</head>
+
+<body>
+    {% include 'parciais/_nav.html' %}
+    <main class="container mt-4 mb-4">
+        {% include 'parciais/_messages.html' %}
+        {% block conteudo %}{% endblock %}
+    </main>
+    <footer>
+        {% include 'parciais/_footer.html'%}
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<!-- perfil/criar.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Criar Perfil</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ perfil_form.as_p }}
+    <button type="submit">Criar Perfil</button>
+  </form>
+  {% if user_form.errors %}
+    <p>{{ user_form.errors }}</p>
+  {% endif %}
+  {% if perfil_form.errors %}
+    <p>{{ perfil_form.errors }}</p>
+  {% endif %}
+{% endblock %}

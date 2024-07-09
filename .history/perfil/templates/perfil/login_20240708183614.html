@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block conteudo %}
+    <h1>Login</h1>
+    <div class="row">
+        <div class="col-lg-6 mt-3">
+            <form method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+
+<main class="container mt-4 mb-4">
+    <div class="row mt-3">
+        <div class="col">
+            <h3>Atualizar Cadastro: </h3>
+            <p class="lead">Caso tenha esquecido atualize seus dados:</p>
+            <form method="post">
+                {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ perfil_form.as_p }}
+                <button type="submit" class="btn btn-primary">Atualizar</button>
+            </form>
+        </div>
+    </div>
+</main>
+{% endblock %}

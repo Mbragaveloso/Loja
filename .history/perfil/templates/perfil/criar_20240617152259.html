@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tgs %}
+
+{% block conteudo %}
+
+<div class="row">
+    <div class="col-lg mt-3">
+            <h4>Login</h4>
+        <p>Para entrar faça seu Login:</p>
+    </div>
+    <div class="row">
+        <div class="col-lg mt-3">
+                <h4>Cadastro</h4>
+           
+            <form method="POST" action="">
+                <!-- Renderização do formulário usando Crispy Forms -->
+                  {{user_form|crispy_forms}}
+                <div class="row">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Salvar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

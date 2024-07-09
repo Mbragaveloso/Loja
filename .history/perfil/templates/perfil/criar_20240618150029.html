@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{% static 'custom/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<div class="container">
+    <div class="col-lg mt-3">
+        <h4>Cadastro</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Cadastrar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-lg mt-3">
+        <h4>Perfil</h4>
+        <form method="POST">
+            {% csrf_token %}
+            {{ perfil_form.as_p }}
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Salvar Perfil</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

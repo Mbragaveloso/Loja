@@ -1,0 +1,5 @@
+ { % if messages %}
+<br> {% for messages in messages %}
+<div class="alert{{ messages.tags }}" role="alert" {{ message}}>
+</div>{% endfor %}{% endif %} from django.contrib.messages import constants MESSAGE_TAGS = { constants.DEBUG: 'alert-info', constants.ERROR: 'alert-danger', constants.INFO: 'alert-info', constants.SUCCESS: 'alert-success', constants.WARNING: 'alert-warning',
+}

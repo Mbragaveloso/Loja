@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block conteudo %}
+
+{{ user_form|as_crispy_field }}
+
+{% endblock %}

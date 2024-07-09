@@ -1,0 +1,4 @@
+Django==4.2.11
+django-crispy-forms== 2.1
+django-debug-toolbar==4.3.0
+Pillow==10.3.0

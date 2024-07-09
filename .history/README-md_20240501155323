@@ -1,0 +1,34 @@
+Projeto elaborado sobre orientação do professor Otavio Miranda
+Um Ecomerce simples
+
+ Não será incluido nesse projeto:
+ Combinações de variações de produto (tem apenas uma variação)
+Cupons de desconto no carrinho de compras
+Cálculo de frete
+Métodos de pagamento (MercadoPago, PayPal, PagSeguro, enfim...)
+
+TODOS
+Itens pretendidos para serem adicionados
+ Model produtos
+ Model variações
+ Listagem e detalhes de produtos e variações
+ Carrinho de compras baseado em session
+ Remover produtos do carrinho
+ Model perfil (criar e atualizar)
+ Login e Logout do cliente
+ Registrar pedido do cliente
+ Página de pagamento
+
+ Lista de comando para adicionar e configurar
+
+ Instalar git (Windows):
+git clone https://github.com/luizomf/django-simple-ecommerce.git
+
+Para Windows:
+
+cd django-simple-ecommerce
+python -m venv venv
+venv\Scripts\activate.bat
+python -m pip install --upgrade pip setuptools wheel --user
+python -m pip install django django-debug-toolbar django-crispy-forms pillow
+python manage.py migrate

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%} 
+{% load static %}
+
+{% block conteudo %}
+    <div class="row">
+        <div class="col-lg-md-6">
+            <h1>Cadastro</h1>
+            
+    <p>Se você Não tem cadastro favor efetuar cadastro para continuar sua compra: </p>
+
+    <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+                {% csrf_token %}
+                {{ perfil_form.as_p }}
+
+                {{ user_form.as_p }}
+
+                <div class="row">
+                    <div class="col-lg-md-6">
+                        <button type="submit" class='btn btn-primary btn block btn-lg'>
+                            Enviar
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

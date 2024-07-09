@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'custom/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul> 	
+{% endif %}
+{% if carrinho %}
+
+<main class="container mt-4 mb-4">
+    <div class="row mt-3">
+        <div class="col">
+{% csrf_token %}
+{{ userform.as_p }}
+</div>
+</div>
+</main>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.remover-item').click(function() {
+            var variacaoId = $(this).data('variacao-id');
+            $.ajax({
+                url: '/remover/' + variacaoId + '/',
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    // Atualize dinamicamente a página para refletir a remoção do item
+                    window.location.reload();
+                }
+            });
+        });
+    });
+</script>
+
+{% endif %}
+
+{% endblock %} 

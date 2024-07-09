@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <div class="row">
+        {% if not request.user.is_authenticated %}
+            <div class="col-lg-6 mt-3">
+                <h4>Login</h4>
+                <p>Se você já tem cadastro, basta entrar com seu usuário e senha abaixo:</p>
+                <form method="post" action="{% url 'perfil:login' %}" style="margin-top: 20px;">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+            </div>
+        {% endif %}
+        <div class="col-lg-6 mt-3">
+            <h4>Cadastro</h4>
+            <p>Se você não tem cadastro, faça seu cadastro:</p>
+
+            <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+                {% csrf_token %}
+                {{ userform|crispy }}
+                {{ perfilform|crispy }}
+
+                <div class="form-group">
+                    {{ userform.first_name.label_tag }}
+                    {{ userform.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ userform.last_name.label_tag }}
+                    {{ userform.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ userform.username.label_tag }}
+                    {{ userform.username }}
+                </div>
+                <div class="form-group">
+                    {{ userform.password.label_tag }}
+                    {{ userform.password }}
+                </div>
+                <div class="form-group">
+                    {{ userform.email.label_tag }}
+                    {{ userform.email }}
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

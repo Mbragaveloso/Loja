@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="pt-br">
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load custom_filters %}
+{% load static %}
+
+{% block conteudo %}
+<body>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <div class="row">
+        {% if not request.user.is_authenticated %}
+            <div class="col-lg-6 mt-3">
+                <h4>Login</h4>
+                <p>Se você já tem cadastro, basta entrar com seu usuário e senha abaixo:</p>
+                <form method="post" action="{% url 'perfil:login' %}" style="margin-top: 20px;">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+            </div>
+        {% endif %}
+        <div class="col-lg-6 mt-3">
+            <h4>Cadastro</h4>
+            {% if userform %}
+        <p>O formulário de usuário está disponível no contexto.</p>
+        {% else %}
+         <p>O formulário de usuário não está disponível no contexto.</p>
+        {% endif %}
+            <p>Se você não tem cadastro, faça seu cadastro:</p>
+
+            <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+
+                {% csrf_token %}
+    
+                {% crispy userform.first_name %}
+                {% crispy userform.last_name %}
+                {% crispy userform.username %}
+                {% crispy userform.email %}
+                {% crispy userform.password %}
+                {% crispy userform.password2 %}
+                         
+                {% crispy userform %}
+                {% crispy perfilform %}
+         
+                <div class="form-group">
+                    {{ userform.first_name.label_tag }}
+                    {{ userform.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ userform.last_name.label_tag }}
+                    {{ userform.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ userform.username.label_tag }}
+                    {{ userform.username }}
+                </div>
+                <div class="form-group">
+                    {{ userform.password.label_tag }}
+                    {{ userform.password }}
+                </div>
+                <div class="form-group">
+                    {{ userform.idade.label_tag }}
+                    {{ userform.idade }}
+                </div>
+                <div class="form-group">
+                    {{ userform.data_nascimento.label_tag }}
+                    {{ userform.data_nascimento }}
+                </div>
+                <div class="form-group">
+                    {{ userform.endereco.label_tag }}
+                    {{ userform.endereco }}
+                </div>
+                <div class="form-group">
+                    {{ userform.numero.label_tag }}
+                    {{ userform.numero }}
+                </div>
+                <div class="form-group">
+                    {{ userform.cep.label_tag }}
+                    {{ userform.cep }}
+                </div>
+                <div class="form-group">
+                    {{ userform.cidade.label_tag }}
+                    {{ userform.cidade }}
+                </div>
+                <div class="form-group">
+                    {{ userform.estado.label_tag }}
+                    {{ userform.estado }}
+                </div>
+
+                <div class="form-group">
+                    {{ userform.email.label_tag }}
+                    {{ userform.email }}
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+{% endblock %}
+</body>

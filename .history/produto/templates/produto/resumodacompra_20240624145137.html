@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load omfilters %} 
+{% load static%}
+{% block conteudo %}
+
+<h1>Resumo da Compra</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Produto</th>
+      <th scope="col">Preço Unitário</th>
+      <th scope="col">Quantidade</th>
+      <th scope="col">Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for produto in produtos %}
+    <tr>
+      <td>{{ produto.nome }}</td>
+      <td>R$ {{ produto.preco_unitario }}</td>
+      <td>{{ produto.quantidade }}</td>
+      <td>R$ {{ produto.subtotal }}</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="3" class="text-right">Total:</td>
+      <td>R$ {{ total }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<form method="post" action="{% url 'produto:finalizarcompra' %}">
+  {% csrf_token %}
+  <button type="submit" class="btn btn-primary">Finalizar Compra</button>
+</form>
+
+{% endblock %}

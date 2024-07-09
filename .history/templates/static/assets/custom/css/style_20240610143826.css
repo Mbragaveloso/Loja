@@ -1,0 +1,166 @@
+.product-price-block {
+    font-size: 1.5rem;
+}
+
+.product-price {
+    font-size: 1.5rem;
+}
+
+.product-old-price {
+    text-decoration: line-through;
+    font-size: 1rem;
+}
+
+.border-top-light-custom {
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+@media (min-width: 34em) {
+    .card-columns {
+        -webkit-column-count: 2;
+        -moz-column-count: 2;
+        column-count: 2;
+    }
+}
+
+@media (min-width: 62em) {
+    .card-columns {
+        -webkit-column-count: 3;
+        -moz-column-count: 3;
+        column-count: 3;
+    }
+}
+
+ul.errorlist {
+    list-style-type: none;
+    margin: 5px 0;
+    padding: 0;
+    font-size: 13px;
+    color: red;
+    display: block;
+}
+
+ul.errorlist li {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group textarea {
+    width: 100%;
+}
+
+.nav-cart, .nav-cart a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.cart-img {
+    max-width: 150px;
+}
+
+/* Estilo para os cabeçalhos */
+h3, .lead {
+    font-size: 1.5rem; /* Ajuste o tamanho conforme necessário */
+    margin-bottom: 1rem; /* Espaçamento inferior */
+}
+
+/* Estilo para os itens da tabela */
+.table th, .table td {
+    font-size: 1.1rem; /* Ajuste o tamanho conforme necessário */
+    padding: 0.75rem; /* Espaçamento interno */
+}
+
+/* Estilo para o botão */
+.btn {
+    font-size: 1rem; /* Ajuste o tamanho conforme necessário */
+    letter-spacing: 0.05rem; /* Espaçamento entre as letras */
+}
+
+.produto-link {
+    font-weight: bold;
+    /* Outros estilos conforme necessário */
+}
+
+.btn-custom-red {
+    background-color: #ff0000;
+    color: #ffffff;
+    border: none;
+}
+
+.btn-custom-red:hover {
+    background-color: #cc0000;
+}
+/* Estilo para os campos do formulário */
+.form-group {
+    margin-bottom: 20px; /* Espaçamento entre os campos */
+}
+
+/* Alinhar rótulos com os campos */
+label {
+    display: inline-block;
+    width: 150px; /* Largura fixa para os rótulos dos campos */
+    text-align: right; /* Alinhamento do texto à direita para os rótulos */
+    margin-bottom: 5px; /* Espaçamento inferior entre o rótulo e o campo */
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 160px); /* Largura total para os campos de entrada */
+    padding: 8px; /* Espaçamento interno */
+    box-sizing: border-box; /* Garante que o preenchimento não aumente a largura */
+    margin-bottom: 10px; /* Espaçamento inferior entre os campos */
+}
+
+/* Estilo para o botão */
+button[type="submit"] {
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Altera o cursor ao passar sobre o botão */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
+}
+* Estilo para os campos do formulário */
+.form-group {
+    margin-bottom: 20px; /* Espaçamento entre os campos */
+}
+
+/* Alinhar rótulos com os campos */
+label {
+    display: inline-block;
+    width: 150px; /* Largura fixa para os rótulos dos campos */
+    text-align: right; /* Alinhamento do texto à direita para os rótulos */
+    margin-bottom: 5px; /* Espaçamento inferior entre o rótulo e o campo */
+}
+
+/* Estilo para os campos de entrada */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 160px); /* Largura total para os campos de entrada */
+    padding: 8px; /* Espaçamento interno */
+    box-sizing: border-box; /* Garante que o preenchimento não aumente a largura */
+    margin-bottom: 10px; /* Espaçamento inferior entre os campos */
+}
+
+/* Estilo para o botão */
+button[type="submit"] {
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #fff; /* Cor do texto do botão */
+    border: none; /* Remove a borda do botão */
+    cursor: pointer; /* Altera o cursor ao passar sobre o botão */
+    border-radius: 5px; /* Borda arredondada */
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3; /* Cor de fundo do botão ao passar o mouse */
+}

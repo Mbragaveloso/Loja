@@ -1,0 +1,25 @@
+{% extends 'base.html' %} <!-- Extendendo o template base -->
+{% load crispy_forms_tags %} <!-- Carregando as tags do crispy_forms -->
+
+{% block conteudo %} <!-- Definindo o bloco de conteúdo -->
+
+<div class="row">
+    {% if not request.user.is_authenticated %}
+    <div class="col-lg-6 mt-3">
+        <h4>Fazer cadastro</h4>
+        <p>Se você ja tem cadastro, basta informar seu usuario e senha para logar </p>
+    </div>
+ 
+
+    <div class="col-lg-6 mt-3">
+        <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+            {% csrf_token %}
+            {{ form|crispy }} <!-- Renderiza o form com o layout do crispy_forms -->
+            {{ perfil_form|crispy }} <!-- Renderiza o perfil_form com o layout do crispy_forms -->
+            
+            <button type="submit" class="btn btn-primary">Cadastrar</button>
+        </form>
+    </div>
+</div>  
+
+{% endblock %}

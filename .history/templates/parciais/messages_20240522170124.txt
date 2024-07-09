@@ -1,0 +1,4 @@
+{ % if messages %}
+<br> {% for messages in messages %}
+<div class="alert{{ messages}}">
+</div>

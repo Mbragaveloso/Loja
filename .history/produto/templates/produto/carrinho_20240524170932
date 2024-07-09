@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load omfilters %}
+
+{% block conteudo %}
+{{ request}}
+{% endblock %}

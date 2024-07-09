@@ -1,0 +1,16 @@
+{% extends 'base.html' %} <!-- Extendendo o template base -->
+{% load crispy_forms_tags %} <!-- Carregando as tags do crispy_forms -->
+{% load static %}
+
+{% block conteudo %} <!-- Definindo o bloco de conteúdo -->
+
+<h1>Login</h1>
+<div class="row">
+    <div class="col-lg-6 mt-3">
+        <form method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>

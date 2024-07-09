@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block conteudo %}
+
+<div class="row">
+    <div class="col-lg mt-3">
+            <h4>Login</h4>
+        <p>SE você ja é cadastrado entre com seus dados:</p>
+        <form method="POST" action="">
+            <!-- Renderização do formulário usando Crispy Forms -->
+            {{ perfil_form|as_crispy_field }}
+            <div class="row">
+                <button type="submit" class="btn btn-primary btn-block btn-lg">Salvar</button>
+    </form>
+    </div>
+    <div class="row">
+        <div class="col-lg mt-3">
+                <h4>Cadastro</h4>
+           
+            <form method="POST" action="">
+                <!-- Renderização do formulário usando Crispy Forms -->
+                {{ user_form.username|as_crispy_field }}
+                <div class="row">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Salvar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

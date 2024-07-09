@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load omfilters %} 
+{% load static %}
+
+{% block conteudo %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'custom/css/style.css' %}">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul> 	
+{% endif %}
+
+{% if carrinho %}
+<main class="container mt-4 mb-4">
+    <div class="row mt-3">
+        <div class="col">
+            <h1>Carrinho</h1>
+            <p class="lead">Os produtos, quantidades e preços que você escolheu.</p>
+
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Imagem</th>
+                            <th>Produto</th>
+                            <th>Tamanho</th>
+                            <th>QTD.</th>
+                            <th>Preço Unitário</th>
+                            <th>Total</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for linha in carrinho.values %}
+                            <tr>
+                                <td class="align-middle">
+                                    {% if linha.imagem %}
+                                    <img class="cart-img" src="{{ linha.imagem }}" alt="{{ linha.produto_nome }}" style="width: 50px; height: auto;">
+                                    {% else %}
+                                        <img class="cart-img" src="{% static 'path/to/default-image.jpg' %}" alt="Imagem padrão" style="width: 50px; height: auto;">
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle">
+                                    <a href="{% url 'produto:detalhe' linha.slug %}">
+                                        {{ linha.produto_nome }}
+                                    </a>
+                                </td>
+                                <td>{{ linha.tamanho }}</td>
+                                <td>{{ linha.quantidade }} X</td>
+                                <td>
+                                    {% if linha.preco_unitario_promocional %}
+                                        {{ linha.preco_unitario_promocional|formata_preco }}
+                                    {% else %}  
+                                        {{ linha.preco_unitario|formata_preco }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if linha.preco_unitario_promocional %}
+                                        {{ linha.preco_unitario_promocional|mul:linha.quantidade|formata_preco }}
+                                    {% else %}
+                                        {{ linha.preco_unitario|mul:linha.quantidade|formata_preco }}
+                                    {% endif %}
+                                </td>
+                                <td class="align-middle">
+                                    <form method="post" action="{% url 'produto:remover_do_carrinho' linha.variacao_id %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="variacao_id" value="{{ linha.variacao_id }}">
+                                        <input type="hidden" name="tamanho" value="{{ linha.tamanho }}">
+                                        <button type="submit">Remover</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>    
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-lg">
+            <p class='lead'>Total no carrinho</p>
+            <div class='table-responsive'>
+                <table class="table">
+                    <tr>
+                        <td class="font-weight-bold">Total</td>
+                        <td>{{ total|formata_preco }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-lg mt-auto">
+            {% if request.user.is_authenticated %}
+            <a class="btn btn-lg btn-block btn-primary" href="{% url 'produto:resumodacompra' %}">                 
+                <button type="submit" class="btn btn-primary">Resumo da Compra</button>
+            </a>
+            {% else %}
+            <a class="btn btn-lg btn-block btn-primary" href="{% url 'perfil:criar' %}">
+                Entrar ou cadastrar e comprar
+            </a>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% else %}
+<main class="container mt-4 mb-4">
+    <div class="row mt-3">
+        <div class="col">
+            <h3>Carrinho</h3>
+            <p class="lead">O seu carrinho está vazio.</p>
+        </div>
+    </div>
+</main>
+{% endif %}
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.remover-item').click(function() {
+            var variacaoId = $(this).data('variacao-id');
+            $.ajax({
+                url: '/remover/' + variacaoId + '/',
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    window.location.reload();
+                }
+            });
+        });
+    });
+</script>
+
+{% endblock %}

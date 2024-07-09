@@ -1,0 +1,122 @@
+/* Estilo para os itens da tabela */
+
+.table th,
+.table td {
+    font-size: 1.1rem;
+    padding: 0.75rem;
+}
+
+
+/* Estilo para o botão */
+
+.btn {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+}
+
+
+/* Estilo para os campos do formulário */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+
+/* Alinhar rótulos com os campos */
+
+label {
+    display: inline-block;
+    width: 200px;
+    margin-right: 10px;
+    text-align: right;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+
+/* Estilo para os campos de entrada */
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea {
+    width: calc(100% - 210px);
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+
+/* Estilo para o botão de envio */
+
+button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+/* Estilo para os campos de seleção */
+
+select {
+    width: calc(100% - 260px);
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+
+/* Estilo para os campos do formulário */
+
+.form-group {
+    margin-bottom: 20px;
+    /* Espaçamento entre os campos */
+}
+
+
+/* Alinhar rótulos com os campos */
+
+label {
+    display: inline-block;
+    width: 200px;
+    /* Largura fixa para os rótulos */
+    margin-right: 10px;
+    /* Espaçamento entre o rótulo e o campo */
+    text-align: right;
+    /* Alinhamento do texto à direita */
+    margin-bottom: 5px;
+    /* Espaçamento inferior entre o rótulo e o campo */
+    font-weight: bold;
+    /* Tornar o texto em negrito */
+}
+
+
+/* Estilo para os campos de seleção */
+
+select {
+    width: calc(100% - 260px);
+    /* Largura total para os campos de seleção */
+    padding: 8px;
+    /* Espaçamento interno */
+    box-sizing: border-box;
+    /* Garante que o preenchimento não aumente a largura */
+    margin-bottom: 10px;
+    /* Espaçamento inferior entre os campos */
+}
+
+select[name="idade"] {
+    width: auto;
+    /* Ajusta automaticamente a largura ao conteúdo */
+    min-width: 60px;
+    /* Define uma largura mínima */
+    padding: 4px;
+    /* Ajusta o padding para reduzir o tamanho do campo */
+}

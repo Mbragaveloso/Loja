@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+   
+    <div class="container">
+        <div class="row">
+            {% if not request.user.is_authenticated %}
+            <div class="col-lg-6 mt-3">
+                <h4>Login</h4>
+                <p>Se você já tem cadastro, basta entrar com seu usuário e senha abaixo:</p>
+                <form method="post" action="{% url 'perfil:login' %}" style="margin-top: 20px;">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Usuário</label>
+                        <input type="text" id="username" name="username" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" class="form-control" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Entrar</button>
+                </form>
+            </div>
+        {% endif %}
+        <div class="col-lg-6 mt-3">
+            <h4>Login</h4>
+            <p>Se você nao tem cadastro efetue seu cadstro para prosseguir:</p>
+            <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ user_form.first_name.label_tag }}
+                    {{ user_form.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.last_name.label_tag }}
+                    {{ user_form.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.username.label_tag }}
+                    {{ user_form.username }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.password.label_tag }}
+                    {{ user_form.password }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.email.label_tag }}
+                    {{ user_form.email }}
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+        <div class="col-lg-6 mt-3">
+            <h4>Cadastro</h4>
+            <p>Se você não possuem cadastro efetue seu cadastro:</p>
+            <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ user_form.first_name.label_tag }}
+                    {{ user_form.first_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.last_name.label_tag }}
+                    {{ user_form.last_name }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.username.label_tag }}
+                    {{ user_form.username }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.password.label_tag }}
+                    {{ user_form.password }}
+                </div>
+                <div class="form-group">
+                    {{ user_form.email.label_tag }}
+                    {{ user_form.email }}
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.remover-item').click(function() {
+            var variacaoId = $(this).data('variacao-id');
+            $.ajax({
+                url: "/remover/" + variacaoId + "/",
+                type: 'POST',
+                data: {
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    // Atualize dinamicamente a página para refletir a remoção do item
+                    window.location.reload();
+                }
+            });
+        });
+    });
+</script>
+{% endblock %}

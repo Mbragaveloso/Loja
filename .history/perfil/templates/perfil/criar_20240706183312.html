@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+<div class="row">
+    {% if not request.user.is_authenticated %}
+    <div class="col-lg-6 mt-3">
+        <h4>Fazer login</h4>
+        <p>Se você já tem cadastro, basta informar seu usuário e senha para logar.</p>
+        <form method="post" action="{% url 'perfil:login' %}" style="margin-top: 20px;">
+            {% csrf_token %}
+            {{ login_form.as_p }}
+            <button type="submit" class="btn btn-primary">Entrar</button>
+        </form>
+    </div>
+    {% endif %}
+
+    <div class="col-lg-6 mt-3">
+        {% block titulocadastro %}
+        <h4>Cadastro</h4>
+        <p>Caso não seja cadastrado, utilize o formulário abaixo para se cadastrar.</p>
+        <form method="post" action="{% url 'perfil:criar' %}" style="margin-top: 20px;">
+            {% csrf_token %}
+            {{ user_form.as_p }}
+            {{ perfil_form.as_p }}
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
+
+    

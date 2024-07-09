@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block conteudo %}
+<div class="row">
+    <div class="col-lg mt-3">
+        <h4>Login</h4>
+        <p>Se você já é cadastrado, entre com seus dados:</p>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="username">Usuário:</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block btn-lg">Entrar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

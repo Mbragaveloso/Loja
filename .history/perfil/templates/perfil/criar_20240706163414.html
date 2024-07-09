@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags%} 
+{% load static %}
+
+{% block conteudo %}
+<div class="container">
+    <div class="row">
+        {% if not request.user.is_authenticated %}
+        <div class="col-md-6">
+            <h2>Fazer cadastro</h2>
+            <form method="post"action="{% url 'perfil:criar' %}" style="margin-top: 20px;">>
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ perfil_form.as_p }}
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+<main class="container mt-4 mb-4">
+    <div class="row mt-3">
+        <div class="col">
+            <h1>Pedido Confirmado</h1>
+            <p>Obrigado pela sua compra! Seu pedido foi recebido com sucesso.</p>
+
+            <h2>Resumo do Pedido</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Produto</th>
+                        <th scope="col">Quantidade</th>
+                        <th scope="col">Preço Unitário</th>
+                        <th scope="col">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in pedido.itens.all %}
+                    <tr>
+                        <td>{{ item.produto.nome }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R$ {{ item.preco|floatformat:2 }}</td>
+                        <td>R$ {{ item.quantidade|mul:item.preco|floatformat:2 }}</td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3" class="text-right">Total:</td>
+                        <td>R$ {{ pedido.total|floatformat:2 }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <a href="{% url 'produto:lista' %}" class="btn btn-primary">Continuar Comprando</a>
+        </div>
+    </div>
+</main>
+{% endblock %}
